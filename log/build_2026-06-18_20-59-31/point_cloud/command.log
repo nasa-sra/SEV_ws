@@ -1,0 +1,2 @@
+Invoking command in '/SEV_ws/build/point_cloud': /usr/bin/cmake /SEV_ws/src/point_cloud -DCMAKE_INSTALL_PREFIX=/SEV_ws/install/point_cloud
+Invoked command in '/SEV_ws/build/point_cloud' returned '1': /usr/bin/cmake /SEV_ws/src/point_cloud -DCMAKE_INSTALL_PREFIX=/SEV_ws/install/point_cloud

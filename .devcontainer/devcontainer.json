@@ -1,0 +1,23 @@
+{
+  "name": "ROS 2 SEV_ws Dev Container",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "smilerobotics.urdf",
+        "dotjoshjohnson.flux",
+        "ms-iot.vscode-ros"
+      ]
+    }
+  },
+  "remoteUser": "sra",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/SEV_ws,type=bind",
+  "workspaceFolder": "/workspaces/SEV_ws",
+  "postCreateCommand": "sudo apt-get update && rosdep update",
+  "overrideCommand": false
+}

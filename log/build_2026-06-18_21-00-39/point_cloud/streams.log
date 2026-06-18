@@ -1,0 +1,52 @@
+[0.452s] Invoking command in '/SEV_ws/build/point_cloud': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /SEV_ws/src/point_cloud -DCMAKE_INSTALL_PREFIX=/SEV_ws/install/point_cloud
+[0.524s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.971s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.549s] -- Found std_msgs: 5.3.8 (/opt/ros/jazzy/share/std_msgs/cmake)
+[1.853s] -- Found rosidl_generator_c: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.969s] -- Found rosidl_generator_cpp: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[2.051s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.157s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.316s] -- Found message_filters: 4.11.17 (/opt/ros/jazzy/share/message_filters/cmake)
+[2.706s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[2.738s] -- Found rmw_fastrtps_cpp: 8.4.4 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[3.154s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[3.220s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[3.298s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.678s] -- Found tf2_ros: 0.36.21 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[4.359s] -- Found tf2_geometry_msgs: 0.36.21 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[4.516s] -- Found eigen3_cmake_module: 0.3.1 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[4.519s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[4.519s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[4.540s] -- Found sensor_msgs: 5.3.8 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[4.628s] -- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[5.106s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[5.107s] -- Configured cppcheck include dirs: 
+[5.109s] -- Configured cppcheck exclude dirs and/or files: 
+[5.113s] -- Added test 'lint_cmake' to check CMake code style
+[5.127s] -- Added test 'uncrustify' to check C / C++ code style
+[5.128s] -- Configured uncrustify additional arguments: 
+[5.131s] -- Added test 'xmllint' to check XML markup files
+[5.143s] -- Configuring done (4.7s)
+[5.185s] -- Generating done (0.0s)
+[5.202s] -- Build files have been written to: /SEV_ws/build/point_cloud
+[5.227s] Invoked command in '/SEV_ws/build/point_cloud' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /SEV_ws/src/point_cloud -DCMAKE_INSTALL_PREFIX=/SEV_ws/install/point_cloud
+[5.230s] Invoking command in '/SEV_ws/build/point_cloud': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /SEV_ws/build/point_cloud -- -j16 -l16
+[5.366s] Invoked command in '/SEV_ws/build/point_cloud' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /SEV_ws/build/point_cloud -- -j16 -l16
+[5.390s] Invoking command in '/SEV_ws/build/point_cloud': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /SEV_ws/build/point_cloud
+[5.409s] -- Install configuration: ""
+[5.411s] -- Installing: /SEV_ws/install/point_cloud/share/ament_index/resource_index/package_run_dependencies/point_cloud
+[5.414s] -- Installing: /SEV_ws/install/point_cloud/share/ament_index/resource_index/parent_prefix_path/point_cloud
+[5.417s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/environment/ament_prefix_path.sh
+[5.420s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/environment/ament_prefix_path.dsv
+[5.422s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/environment/path.sh
+[5.425s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/environment/path.dsv
+[5.427s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/local_setup.bash
+[5.430s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/local_setup.sh
+[5.434s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/local_setup.zsh
+[5.437s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/local_setup.dsv
+[5.440s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/package.dsv
+[5.443s] -- Installing: /SEV_ws/install/point_cloud/share/ament_index/resource_index/packages/point_cloud
+[5.446s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/cmake/point_cloudConfig.cmake
+[5.448s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/cmake/point_cloudConfig-version.cmake
+[5.451s] -- Installing: /SEV_ws/install/point_cloud/share/point_cloud/package.xml
+[5.457s] Invoked command in '/SEV_ws/build/point_cloud' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /SEV_ws/build/point_cloud

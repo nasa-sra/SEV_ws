@@ -1,0 +1,191 @@
+[0.259s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.260s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7f703c1744d0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f703c174140>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f703c174140>>, mixin_verb=('build',))
+[0.355s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.358s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/Gazebo.meta'
+[0.359s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastdds.meta'
+[0.360s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastrtps.meta'
+[0.361s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.361s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.361s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.361s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.361s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.362s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/SEV_ws'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.420s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.420s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.422s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.422s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.424s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.424s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.425s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.425s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.426s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.426s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.427s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.427s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.427s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.427s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.429s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.429s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.429s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.429s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.429s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.429s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.430s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.430s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.430s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_recorder) by extensions ['ignore', 'ignore_ament_install']
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_recorder) by extension 'ignore'
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_recorder) by extension 'ignore_ament_install'
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_recorder) by extensions ['colcon_pkg']
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_recorder) by extension 'colcon_pkg'
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_recorder) by extensions ['colcon_meta']
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_recorder) by extension 'colcon_meta'
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_recorder) by extensions ['ros']
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_recorder) by extension 'ros'
+[0.437s] DEBUG:colcon.colcon_core.package_identification:Package 'src/path_recorder' with type 'ros.ament_python' and name 'path_recorder'
+[0.438s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_cloud) by extensions ['ignore', 'ignore_ament_install']
+[0.439s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_cloud) by extension 'ignore'
+[0.439s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_cloud) by extension 'ignore_ament_install'
+[0.439s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_cloud) by extensions ['colcon_pkg']
+[0.440s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_cloud) by extension 'colcon_pkg'
+[0.440s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_cloud) by extensions ['colcon_meta']
+[0.440s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_cloud) by extension 'colcon_meta'
+[0.440s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_cloud) by extensions ['ros']
+[0.440s] Level 1:colcon.colcon_core.package_identification:_identify(src/point_cloud) by extension 'ros'
+[0.442s] DEBUG:colcon.colcon_core.package_identification:Package 'src/point_cloud' with type 'ros.ament_cmake' and name 'point_cloud'
+[0.442s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.442s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.442s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.442s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.442s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.475s] Level 5:colcon.colcon_core.verb:set package 'path_recorder' build argument 'cmake_args' from command line to 'None'
+[0.476s] Level 5:colcon.colcon_core.verb:set package 'path_recorder' build argument 'cmake_target' from command line to 'None'
+[0.476s] Level 5:colcon.colcon_core.verb:set package 'path_recorder' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.477s] Level 5:colcon.colcon_core.verb:set package 'path_recorder' build argument 'cmake_clean_cache' from command line to 'False'
+[0.479s] Level 5:colcon.colcon_core.verb:set package 'path_recorder' build argument 'cmake_clean_first' from command line to 'False'
+[0.480s] Level 5:colcon.colcon_core.verb:set package 'path_recorder' build argument 'cmake_force_configure' from command line to 'False'
+[0.480s] Level 5:colcon.colcon_core.verb:set package 'path_recorder' build argument 'ament_cmake_args' from command line to 'None'
+[0.480s] Level 5:colcon.colcon_core.verb:set package 'path_recorder' build argument 'catkin_cmake_args' from command line to 'None'
+[0.480s] Level 5:colcon.colcon_core.verb:set package 'path_recorder' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.480s] DEBUG:colcon.colcon_core.verb:Building package 'path_recorder' with the following arguments: {'ament_cmake_args': None, 'build_base': '/SEV_ws/build/path_recorder', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/SEV_ws/install/path_recorder', 'merge_install': False, 'path': '/SEV_ws/src/path_recorder', 'symlink_install': False, 'test_result_base': None}
+[0.481s] Level 5:colcon.colcon_core.verb:set package 'point_cloud' build argument 'cmake_args' from command line to 'None'
+[0.481s] Level 5:colcon.colcon_core.verb:set package 'point_cloud' build argument 'cmake_target' from command line to 'None'
+[0.481s] Level 5:colcon.colcon_core.verb:set package 'point_cloud' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.481s] Level 5:colcon.colcon_core.verb:set package 'point_cloud' build argument 'cmake_clean_cache' from command line to 'False'
+[0.481s] Level 5:colcon.colcon_core.verb:set package 'point_cloud' build argument 'cmake_clean_first' from command line to 'False'
+[0.481s] Level 5:colcon.colcon_core.verb:set package 'point_cloud' build argument 'cmake_force_configure' from command line to 'False'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'point_cloud' build argument 'ament_cmake_args' from command line to 'None'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'point_cloud' build argument 'catkin_cmake_args' from command line to 'None'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'point_cloud' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.482s] DEBUG:colcon.colcon_core.verb:Building package 'point_cloud' with the following arguments: {'ament_cmake_args': None, 'build_base': '/SEV_ws/build/point_cloud', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/SEV_ws/install/point_cloud', 'merge_install': False, 'path': '/SEV_ws/src/point_cloud', 'symlink_install': False, 'test_result_base': None}
+[0.482s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.485s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.485s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/SEV_ws/src/path_recorder' with build type 'ament_python'
+[0.486s] Level 1:colcon.colcon_core.shell:create_environment_hook('path_recorder', 'ament_prefix_path')
+[0.489s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.489s] INFO:colcon.colcon_core.shell:Creating environment hook '/SEV_ws/install/path_recorder/share/path_recorder/hook/ament_prefix_path.ps1'
+[0.490s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/SEV_ws/install/path_recorder/share/path_recorder/hook/ament_prefix_path.dsv'
+[0.492s] INFO:colcon.colcon_core.shell:Creating environment hook '/SEV_ws/install/path_recorder/share/path_recorder/hook/ament_prefix_path.sh'
+[0.493s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.493s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.502s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/SEV_ws/src/point_cloud' with build type 'ament_cmake'
+[0.503s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/SEV_ws/src/point_cloud'
+[0.503s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.503s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.934s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/SEV_ws/src/path_recorder'
+[0.935s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.935s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.958s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/SEV_ws/build/point_cloud': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /SEV_ws/src/point_cloud -DCMAKE_INSTALL_PREFIX=/SEV_ws/install/point_cloud
+[1.999s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/SEV_ws/src/path_recorder': PYTHONPATH=/SEV_ws/build/path_recorder/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/SEV_ws/install/path_recorder/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/path_recorder build --build-base /SEV_ws/build/path_recorder/build install --record /SEV_ws/build/path_recorder/install.log --single-version-externally-managed install_data
+[3.115s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/path_recorder' for CMake module files
+[3.116s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/SEV_ws/src/path_recorder' returned '0': PYTHONPATH=/SEV_ws/build/path_recorder/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/SEV_ws/install/path_recorder/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/path_recorder build --build-base /SEV_ws/build/path_recorder/build install --record /SEV_ws/build/path_recorder/install.log --single-version-externally-managed install_data
+[3.118s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/path_recorder' for CMake config files
+[3.122s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/path_recorder/lib'
+[3.123s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/path_recorder/bin'
+[3.123s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/path_recorder/lib/pkgconfig/path_recorder.pc'
+[3.124s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/path_recorder/lib/python3.12/site-packages'
+[3.124s] Level 1:colcon.colcon_core.shell:create_environment_hook('path_recorder', 'pythonpath')
+[3.125s] INFO:colcon.colcon_core.shell:Creating environment hook '/SEV_ws/install/path_recorder/share/path_recorder/hook/pythonpath.ps1'
+[3.127s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/SEV_ws/install/path_recorder/share/path_recorder/hook/pythonpath.dsv'
+[3.129s] INFO:colcon.colcon_core.shell:Creating environment hook '/SEV_ws/install/path_recorder/share/path_recorder/hook/pythonpath.sh'
+[3.131s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/path_recorder/bin'
+[3.131s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(path_recorder)
+[3.132s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/path_recorder/share/path_recorder/package.ps1'
+[3.134s] INFO:colcon.colcon_core.shell:Creating package descriptor '/SEV_ws/install/path_recorder/share/path_recorder/package.dsv'
+[3.136s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/path_recorder/share/path_recorder/package.sh'
+[3.138s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/path_recorder/share/path_recorder/package.bash'
+[3.139s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/path_recorder/share/path_recorder/package.zsh'
+[3.141s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/SEV_ws/install/path_recorder/share/colcon-core/packages/path_recorder)
+[5.735s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/SEV_ws/build/point_cloud' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /SEV_ws/src/point_cloud -DCMAKE_INSTALL_PREFIX=/SEV_ws/install/point_cloud
+[5.738s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/SEV_ws/build/point_cloud': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /SEV_ws/build/point_cloud -- -j16 -l16
+[5.873s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/SEV_ws/build/point_cloud' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /SEV_ws/build/point_cloud -- -j16 -l16
+[5.897s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/SEV_ws/build/point_cloud': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /SEV_ws/build/point_cloud
+[5.963s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(point_cloud)
+[5.963s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud' for CMake module files
+[5.964s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/SEV_ws/build/point_cloud' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /SEV_ws/build/point_cloud
+[5.966s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud' for CMake config files
+[5.969s] Level 1:colcon.colcon_core.shell:create_environment_hook('point_cloud', 'cmake_prefix_path')
+[5.970s] INFO:colcon.colcon_core.shell:Creating environment hook '/SEV_ws/install/point_cloud/share/point_cloud/hook/cmake_prefix_path.ps1'
+[5.972s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/SEV_ws/install/point_cloud/share/point_cloud/hook/cmake_prefix_path.dsv'
+[5.974s] INFO:colcon.colcon_core.shell:Creating environment hook '/SEV_ws/install/point_cloud/share/point_cloud/hook/cmake_prefix_path.sh'
+[5.975s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud/bin'
+[5.976s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud/lib/pkgconfig/point_cloud.pc'
+[5.976s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud/lib/python3.12/site-packages'
+[5.978s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud/bin'
+[5.979s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/point_cloud/share/point_cloud/package.ps1'
+[5.981s] INFO:colcon.colcon_core.shell:Creating package descriptor '/SEV_ws/install/point_cloud/share/point_cloud/package.dsv'
+[5.982s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/point_cloud/share/point_cloud/package.sh'
+[5.983s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/point_cloud/share/point_cloud/package.bash'
+[5.984s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/point_cloud/share/point_cloud/package.zsh'
+[5.985s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/SEV_ws/install/point_cloud/share/colcon-core/packages/point_cloud)
+[5.987s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(point_cloud)
+[5.987s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud' for CMake module files
+[5.989s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud' for CMake config files
+[5.992s] Level 1:colcon.colcon_core.shell:create_environment_hook('point_cloud', 'cmake_prefix_path')
+[5.992s] INFO:colcon.colcon_core.shell:Creating environment hook '/SEV_ws/install/point_cloud/share/point_cloud/hook/cmake_prefix_path.ps1'
+[5.994s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/SEV_ws/install/point_cloud/share/point_cloud/hook/cmake_prefix_path.dsv'
+[5.995s] INFO:colcon.colcon_core.shell:Creating environment hook '/SEV_ws/install/point_cloud/share/point_cloud/hook/cmake_prefix_path.sh'
+[5.996s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud/bin'
+[5.996s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud/lib/pkgconfig/point_cloud.pc'
+[5.997s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud/lib/python3.12/site-packages'
+[5.998s] Level 1:colcon.colcon_core.environment:checking '/SEV_ws/install/point_cloud/bin'
+[5.998s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/point_cloud/share/point_cloud/package.ps1'
+[5.999s] INFO:colcon.colcon_core.shell:Creating package descriptor '/SEV_ws/install/point_cloud/share/point_cloud/package.dsv'
+[6.000s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/point_cloud/share/point_cloud/package.sh'
+[6.001s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/point_cloud/share/point_cloud/package.bash'
+[6.002s] INFO:colcon.colcon_core.shell:Creating package script '/SEV_ws/install/point_cloud/share/point_cloud/package.zsh'
+[6.003s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/SEV_ws/install/point_cloud/share/colcon-core/packages/point_cloud)
+[6.004s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[6.004s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[6.005s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[6.005s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[6.018s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[6.019s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[6.019s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[6.019s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[6.024s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.Spawn.ExecFailed: /usr/bin/dbus-launch terminated abnormally without any error message
+[6.024s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[6.025s] INFO:colcon.colcon_core.shell:Creating prefix script '/SEV_ws/install/local_setup.ps1'
+[6.027s] INFO:colcon.colcon_core.shell:Creating prefix util module '/SEV_ws/install/_local_setup_util_ps1.py'
+[6.031s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/SEV_ws/install/setup.ps1'
+[6.033s] INFO:colcon.colcon_core.shell:Creating prefix script '/SEV_ws/install/local_setup.sh'
+[6.034s] INFO:colcon.colcon_core.shell:Creating prefix util module '/SEV_ws/install/_local_setup_util_sh.py'
+[6.036s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/SEV_ws/install/setup.sh'
+[6.037s] INFO:colcon.colcon_core.shell:Creating prefix script '/SEV_ws/install/local_setup.bash'
+[6.039s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/SEV_ws/install/setup.bash'
+[6.041s] INFO:colcon.colcon_core.shell:Creating prefix script '/SEV_ws/install/local_setup.zsh'
+[6.042s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/SEV_ws/install/setup.zsh'
