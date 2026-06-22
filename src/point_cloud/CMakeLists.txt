@@ -7,11 +7,34 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(message_filters REQUIRED)
-find_package(tf2_ros REQUIRED)
-find_package(tf2_geometry_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_sensor_msgs REQUIRED)
+find_package(pcl_conversions REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(PCL REQUIRED COMPONENTS common io filters)
+
+include_directories(include ${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+add_executable(pointcloud_fusion_node
+  src/point_cloud_fusion_node.cpp
+  src/point_cloud_fusion_main.cpp
+)
+
+ament_target_dependencies(pointcloud_fusion_node rclcpp)
+ament_target_dependencies(pointcloud_fusion_node sensor_msgs)
+ament_target_dependencies(pointcloud_fusion_node geometry_msgs)
+ament_target_dependencies(pointcloud_fusion_node tf2)
+ament_target_dependencies(pointcloud_fusion_node tf2_ros)
+ament_target_dependencies(pointcloud_fusion_node tf2_sensor_msgs)
+ament_target_dependencies(pointcloud_fusion_node pcl_conversions)
+ament_target_dependencies(pointcloud_fusion_node std_srvs)
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -25,4 +48,10 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+ 
+install(DIRECTORY
+  launch
+  # config
+  DESTINATION share/${PROJECT_NAME}
+)
 ament_package()

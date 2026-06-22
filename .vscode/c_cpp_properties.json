@@ -8,7 +8,9 @@
             "includePath": [
                 "/opt/ros/jazzy/include/**",
                 "/usr/include/**",
-                "/opt/ros/jazzy/include/rclcpp"
+                "/opt/ros/jazzy/include/rclcpp",
+                "/home/saath/NASA/SEV/SEV_ws/src/point_cloud/include/",
+                "/opt/ros/jazzy/include/std_srvs"
             ],
             "name": "ros2",
             "intelliSenseMode": "gcc-x64",

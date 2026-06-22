@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /SEV_ws/src/point_cloud
+CMAKE_SOURCE_DIR = /home/saath/NASA/SEV/SEV_ws/src/point_cloud
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /SEV_ws/build/point_cloud
+CMAKE_BINARY_DIR = /home/saath/NASA/SEV/SEV_ws/build/point_cloud
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /SEV_ws/build/point_cloud && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /SEV_ws/src/point_cloud /SEV_ws/src/point_cloud /SEV_ws/build/point_cloud /SEV_ws/build/point_cloud /SEV_ws/build/point_cloud/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/saath/NASA/SEV/SEV_ws/build/point_cloud && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/saath/NASA/SEV/SEV_ws/src/point_cloud /home/saath/NASA/SEV/SEV_ws/src/point_cloud /home/saath/NASA/SEV/SEV_ws/build/point_cloud /home/saath/NASA/SEV/SEV_ws/build/point_cloud /home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/uninstall.dir/depend
 
