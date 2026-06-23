@@ -16,7 +16,7 @@ set(_point_cloud_CONFIG_INCLUDED TRUE)
 
 # output package information
 if(NOT point_cloud_FIND_QUIETLY)
-  message(STATUS "Found point_cloud: 0.0.1 (${point_cloud_DIR})")
+  message(STATUS "Found point_cloud: 1.0.0 (${point_cloud_DIR})")
 endif()
 
 # warn when using a deprecated package

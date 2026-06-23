@@ -1,5 +1,5 @@
 set(_AMENT_PACKAGE_NAME "point_cloud")
-set(point_cloud_VERSION "0.0.1")
+set(point_cloud_VERSION "1.0.0")
 set(point_cloud_MAINTAINER "saath <saathvikkamma@gmail.com>")
 set(point_cloud_BUILD_DEPENDS "rclcpp" "sensor_msgs" "geometry_msgs" "tf2" "tf2_ros" "tf2_sensor_msgs" "pcl_conversions" "libpcl-all-dev")
 set(point_cloud_BUILDTOOL_DEPENDS "ament_cmake")

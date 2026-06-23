@@ -4996,3 +4996,217 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/VTK-vtk-module-find-packages.cmake:397 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/vtk-config.cmake:150 (include)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:275 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:324 (find_VTK)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:567 (find_external_library)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)"
+      - "CMakeLists.txt:16 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-QpRdmf"
+      binary: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-QpRdmf"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/patches/99;/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1;/opt/ros/jazzy/share/fastrtps_cmake_module/cmake/Modules;/usr/lib/x86_64-linux-gnu/cmake/pcl/Modules"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-QpRdmf'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3a35b/fast
+        gmake[1]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-QpRdmf'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_3a35b.dir/build.make CMakeFiles/cmTC_3a35b.dir/build
+        gmake[2]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-QpRdmf'
+        Building C object CMakeFiles/cmTC_3a35b.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_3a35b.dir/test_mpi.c.o -c /home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-QpRdmf/test_mpi.c
+        Linking C executable cmTC_3a35b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3a35b.dir/link.txt --verbose=1
+        /usr/bin/cc -L/usr/lib/x86_64-linux-gnu/openmpi/lib CMakeFiles/cmTC_3a35b.dir/test_mpi.c.o -o cmTC_3a35b  /usr/lib/x86_64-linux-gnu/libmpi.so 
+        gmake[2]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-QpRdmf'
+        gmake[1]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-QpRdmf'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/VTK-vtk-module-find-packages.cmake:397 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/vtk-config.cmake:150 (include)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:275 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:324 (find_VTK)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:567 (find_external_library)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)"
+      - "CMakeLists.txt:16 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-9c6J17"
+      binary: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-9c6J17"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/patches/99;/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1;/opt/ros/jazzy/share/fastrtps_cmake_module/cmake/Modules;/usr/lib/x86_64-linux-gnu/cmake/pcl/Modules"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-9c6J17'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_5f0a0/fast
+        gmake[1]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-9c6J17'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_5f0a0.dir/build.make CMakeFiles/cmTC_5f0a0.dir/build
+        gmake[2]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-9c6J17'
+        Building C object CMakeFiles/cmTC_5f0a0.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_5f0a0.dir/test_mpi.c.o -c /home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-9c6J17/test_mpi.c
+        Linking C executable cmTC_5f0a0
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f0a0.dir/link.txt --verbose=1
+        /usr/bin/cc -L/usr/lib/x86_64-linux-gnu/openmpi/lib CMakeFiles/cmTC_5f0a0.dir/test_mpi.c.o -o cmTC_5f0a0  /usr/lib/x86_64-linux-gnu/libmpi.so 
+        gmake[2]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-9c6J17'
+        gmake[1]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-9c6J17'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/VTK-vtk-module-find-packages.cmake:397 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/vtk-config.cmake:150 (include)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:275 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:324 (find_VTK)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)"
+      - "CMakeLists.txt:16 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-EzLEV6"
+      binary: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-EzLEV6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/patches/99;/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1;/opt/ros/jazzy/share/fastrtps_cmake_module/cmake/Modules;/usr/lib/x86_64-linux-gnu/cmake/pcl/Modules"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-EzLEV6'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b001a/fast
+        gmake[1]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-EzLEV6'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b001a.dir/build.make CMakeFiles/cmTC_b001a.dir/build
+        gmake[2]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-EzLEV6'
+        Building C object CMakeFiles/cmTC_b001a.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_b001a.dir/test_mpi.c.o -c /home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-EzLEV6/test_mpi.c
+        Linking C executable cmTC_b001a
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b001a.dir/link.txt --verbose=1
+        /usr/bin/cc -L/usr/lib/x86_64-linux-gnu/openmpi/lib CMakeFiles/cmTC_b001a.dir/test_mpi.c.o -o cmTC_b001a  /usr/lib/x86_64-linux-gnu/libmpi.so 
+        gmake[2]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-EzLEV6'
+        gmake[1]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-EzLEV6'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/VTK-vtk-module-find-packages.cmake:397 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/vtk-config.cmake:150 (include)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:275 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:324 (find_VTK)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:567 (find_external_library)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)"
+      - "CMakeLists.txt:16 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-iTlvjU"
+      binary: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-iTlvjU"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/patches/99;/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1;/opt/ros/jazzy/share/fastrtps_cmake_module/cmake/Modules;/usr/lib/x86_64-linux-gnu/cmake/pcl/Modules"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-iTlvjU'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_02301/fast
+        gmake[1]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-iTlvjU'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_02301.dir/build.make CMakeFiles/cmTC_02301.dir/build
+        gmake[2]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-iTlvjU'
+        Building C object CMakeFiles/cmTC_02301.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_02301.dir/test_mpi.c.o -c /home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-iTlvjU/test_mpi.c
+        Linking C executable cmTC_02301
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_02301.dir/link.txt --verbose=1
+        /usr/bin/cc -L/usr/lib/x86_64-linux-gnu/openmpi/lib CMakeFiles/cmTC_02301.dir/test_mpi.c.o -o cmTC_02301  /usr/lib/x86_64-linux-gnu/libmpi.so 
+        gmake[2]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-iTlvjU'
+        gmake[1]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-iTlvjU'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/VTK-vtk-module-find-packages.cmake:397 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/vtk-config.cmake:150 (include)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:275 (find_package)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:324 (find_VTK)"
+      - "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:567 (find_external_library)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)"
+      - "/opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)"
+      - "CMakeLists.txt:16 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-01J3vn"
+      binary: "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-01J3vn"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/patches/99;/usr/lib/x86_64-linux-gnu/cmake/vtk-9.1;/opt/ros/jazzy/share/fastrtps_cmake_module/cmake/Modules;/usr/lib/x86_64-linux-gnu/cmake/pcl/Modules"
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-01J3vn'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_7afa0/fast
+        gmake[1]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-01J3vn'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_7afa0.dir/build.make CMakeFiles/cmTC_7afa0.dir/build
+        gmake[2]: Entering directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-01J3vn'
+        Building C object CMakeFiles/cmTC_7afa0.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_7afa0.dir/test_mpi.c.o -c /home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-01J3vn/test_mpi.c
+        Linking C executable cmTC_7afa0
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7afa0.dir/link.txt --verbose=1
+        /usr/bin/cc -L/usr/lib/x86_64-linux-gnu/openmpi/lib CMakeFiles/cmTC_7afa0.dir/test_mpi.c.o -o cmTC_7afa0  /usr/lib/x86_64-linux-gnu/libmpi.so 
+        gmake[2]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-01J3vn'
+        gmake[1]: Leaving directory '/home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles/CMakeScratch/TryCompile-01J3vn'
+        
+      exitCode: 0
+...

@@ -46,6 +46,17 @@ def generate_launch_description():
             "enable_depth": "true",
             "align_depth.enable": "true",
             "pointcloud.enable": "true",
+            "accelerate_gpu_with_gsl": "true",
+            "decimation_filter.enable": "true",
+            "decimation_filter.magnitude": "2",
+            "spatial_filter.enable": "true",
+            "spatial_filter.holes_fill": "1",
+            "temporal_filter.enable": "true",
+            "temporal_filter.alpha": "0.4",
+            "temporal_filter.delta": "20",
+            "HDR_merge.enable": "true",
+            "rotation_filter.enable": "true",
+            "depth_module_infra_profile": "1280x720x30",
         }
         if name == PRIMARY_CAMERA:
             camera_args.update(
