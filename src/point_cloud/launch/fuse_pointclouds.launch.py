@@ -117,7 +117,7 @@ def generate_launch_description():
                 "voxel_leaf_size": 0.1,
                 "accumulate_clouds": True,
                 "accumulation_voxel_leaf_size": 0.1,
-                "max_accumulated_points": 5000000,
+                "max_accumulated_points": 10000000,
                 "qos_reliability": "reliable",
             }
         ],
