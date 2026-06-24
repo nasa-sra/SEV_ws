@@ -12,6 +12,12 @@ CAMERAS = [
         "xyz": (0.0, 0.0, 0.0),
         "rpy": (0.0, 0.0, 0.0),
     },
+    # {
+    #     "name": "IntelRealSenseD455",
+    #     "serial_no": "_231622302329",
+    #     "xyz": (0.0, 0.0, 0.0),
+    #     "rpy": (0.0, 0.0, 0.0),
+    # }
 ]
 PRIMARY_CAMERA = CAMERAS[0]["name"]
 GLOBAL_FRAME = "map"
