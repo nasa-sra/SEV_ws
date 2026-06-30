@@ -1,7 +1,7 @@
 vectornav:
   ros__parameters:
     port: "/dev/ttyUSB0"
-    baud: 115200
+    baud: 921600
     reconnect_ms: 500
     # Reference vnproglib-1.2.0.0 headers for enum definitions
     # Async Output Type (ASCII)
@@ -39,12 +39,12 @@ vectornav:
     BO2:
       asyncMode: 0                   # ASYNCMODE_NONE
       rateDivisor: 0
-      commonField: 0x0000            # COMMONGROUP_NONE
+      commonField: 0x7FFF # commonField: 0x0000            # COMMONGROUP_NONE
       timeField: 0x0000              # TIMEGROUP_NONE
       imuField: 0x0000               # IMUGROUP_NONE
-      gpsField: 0x0000               # GPSGROUP_NONE
+      gpsField: 0x0000 # gpsField: 0x0000               # GPSGROUP_NONE
       attitudeField: 0x0000          # ATTITUDEGROUP_NONE
-      insField: 0x0000               # INSGROUP_NONE
+      insField: 0x0000 # insField: 0x0000               # INSGROUP_NONE
       gps2Field: 0x0000              # GPSGROUP_NONE
     # Binary output register 3
     BO3:

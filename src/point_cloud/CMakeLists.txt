@@ -54,4 +54,14 @@ install(DIRECTORY
   # config
   DESTINATION share/${PROJECT_NAME}
 )
+install(TARGETS
+  pointcloud_fusion_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Your existing launch folder install block follows below:
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}
+)
 ament_package()

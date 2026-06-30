@@ -1,3 +1,4 @@
+import cmath
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
@@ -8,16 +9,22 @@ from launch_ros.actions import Node
 CAMERAS = [
     {
         "name": "IntelRealSenseD455",
-        "serial_no": "_231622302574",
+        "serial_no": "_231622302329",
         "xyz": (0.0, 0.0, 0.0),
         "rpy": (0.0, 0.0, 0.0),
     },
-    # {
-    #     "name": "IntelRealSenseD455",
-    #     "serial_no": "_231622302329",
-    #     "xyz": (0.0, 0.0, 0.0),
-    #     "rpy": (0.0, 0.0, 0.0),
-    # }
+    {
+        "name": "IntelRealSenseD455_2",
+        "serial_no": "_231622302574",
+        "xyz": (-234.367851 / 1000.0, 67.184139 / 1000.0, 0.0 / 1000.0),
+        "rpy": (0.0, 0.0, cmath.pi / 2.0),
+    },
+    {
+        "name": "IntelRealSenseD435",
+        "serial_no": "_827312071735",
+        "xyz": (-98.226089 / 1000.0, 14.740766 / 1000.0, 0.0 / 1000.0),
+        "rpy": (cmath.pi, 0.0, cmath.pi / 4.0),
+    },
 ]
 PRIMARY_CAMERA = CAMERAS[0]["name"]
 GLOBAL_FRAME = "map"
@@ -120,10 +127,10 @@ def generate_launch_description():
                 "publish_rate_hz": 10.0,
                 "max_cloud_age_seconds": 1.0,
                 "use_color": True,
-                "voxel_leaf_size": 0.1,
+                "voxel_leaf_size": 0.2,
                 "accumulate_clouds": True,
                 "accumulation_voxel_leaf_size": 0.1,
-                "max_accumulated_points": 10000000,
+                "max_accumulated_points": 500000,
                 "qos_reliability": "reliable",
             }
         ],
