@@ -1,9 +1,26 @@
 {
-  "name": "ROS 2 SEV_ws Dev Container",
-  "build": {
-    "dockerfile": "../Dockerfile",
-    "context": ".."
+  "name": "SEV_ws (Isaac ROS / fast_point_cloud)",
+  "image": "cached_isaac_run_dev_image_local:latest",
+  "runArgs": [
+    "--gpus",
+    "all",
+    "--network=host",
+    "--privileged"
+  ],
+  "initializeCommand": "xhost +local:root >/dev/null 2>&1 || true",
+  "containerEnv": {
+    "ROS_DOMAIN_ID": "0",
+    // this is the only way i got gui to show up
+    "DISPLAY": "${localEnv:DISPLAY}",
+    "QT_X11_NO_MITSHM": "1",
+    "NVIDIA_DRIVER_CAPABILITIES": "all"
   },
+  "mounts": [
+    "source=/dev,target=/dev,type=bind",
+    "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind"
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/SEV_ws,type=bind",
+  "workspaceFolder": "/workspaces/SEV_ws",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -14,10 +31,5 @@
         "ms-iot.vscode-ros"
       ]
     }
-  },
-  "remoteUser": "sra",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/SEV_ws,type=bind",
-  "workspaceFolder": "/workspaces/SEV_ws",
-  "postCreateCommand": "sudo apt-get update && rosdep update",
-  "overrideCommand": false
+  }
 }

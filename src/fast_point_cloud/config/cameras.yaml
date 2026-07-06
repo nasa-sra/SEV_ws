@@ -1,0 +1,11 @@
+# ONLY ONE CAM SHOULD HAVE IMU ENABLED!
+cameras:
+  - name: front
+    serial_no: "_000000000000"
+    imu: true
+  - name: left
+    serial_no: "_111111111111"
+    imu: false
+  - name: right
+    serial_no: "_222222222222"
+    imu: false

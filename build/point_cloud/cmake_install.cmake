@@ -1,8 +1,8 @@
-# Install script for directory: /home/saath/NASA/SEV/SEV_ws/src/point_cloud
+# Install script for directory: /workspaces/SEV_ws/src/point_cloud
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/saath/NASA/SEV/SEV_ws/install/point_cloud")
+  set(CMAKE_INSTALL_PREFIX "/workspaces/SEV_ws/install/point_cloud")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("/home/saath/NASA/SEV/SEV_ws/build/point_cloud/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
+  include("/workspaces/SEV_ws/build/point_cloud/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -54,5 +54,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/saath/NASA/SEV/SEV_ws/build/point_cloud/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/workspaces/SEV_ws/build/point_cloud/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

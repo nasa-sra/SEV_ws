@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/saath/NASA/SEV/SEV_ws/src/point_cloud
+CMAKE_SOURCE_DIR = /workspaces/SEV_ws/src/point_cloud
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/saath/NASA/SEV/SEV_ws/build/point_cloud
+CMAKE_BINARY_DIR = /workspaces/SEV_ws/build/point_cloud
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles /home/saath/NASA/SEV/SEV_ws/build/point_cloud//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/SEV_ws/build/point_cloud/CMakeFiles /workspaces/SEV_ws/build/point_cloud//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/saath/NASA/SEV/SEV_ws/build/point_cloud/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/SEV_ws/build/point_cloud/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

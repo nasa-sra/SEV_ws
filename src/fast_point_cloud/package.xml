@@ -2,16 +2,30 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>fast_point_cloud</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <version>0.1.0</version>
+  <description>
+    GPU-accelerated perception for the Lunar SEV: Isaac ROS Visual SLAM
+    (cuVSLAM) for pose and Isaac ROS Nvblox for the obstacle/ESDF map, fed by
+    multiple Intel RealSense D455 cameras. Publishes pose (TF + odometry) and an
+    obstacle map.
+  </description>
   <maintainer email="saathvikkamma@gmail.com">saath</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <exec_depend>isaac_ros_visual_slam</exec_depend>
+  <exec_depend>isaac_ros_nvblox</exec_depend>
+  <exec_depend>realsense2_camera</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
-  <exec_depend>rclcpp</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

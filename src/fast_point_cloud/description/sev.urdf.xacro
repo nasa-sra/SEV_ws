@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot name="sev"
+  xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- SEV body origin -->
+  <link name="base_link"/>
+
+  <xacro:macro name="camera_mount" params="name x y z roll pitch yaw">
+    <link name="${name}_link"/>
+    <joint name="base_to_${name}" type="fixed">
+      <parent link="base_link"/>
+      <child link="${name}_link"/>
+      <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}"/>
+    </joint>
+  </xacro:macro>
+
+  <!-- cameras go here btw -->
+  <xacro:camera_mount name="front" x="0.0" y="0.0" z="0.5" roll="0" pitch="0" yaw="0"/>
+  <xacro:camera_mount name="left" x="0.0" y="0" z="0.5" roll="0" pitch="0" yaw="0"/>
+  <xacro:camera_mount name="right" x="0.0" y="0" z="0.5" roll="0" pitch="0" yaw="0"/>
+
+</robot>

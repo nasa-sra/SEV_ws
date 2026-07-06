@@ -1,0 +1,16 @@
+/**:
+  ros__parameters:
+    global_frame: odom
+    use_depth: true
+    use_color: true
+    use_lidar: false
+    mapping_type: "static_tsdf"
+    esdf_mode: "2d"
+    publish_esdf_distance_slice: true
+    # this is for height banding for obstacle detection which needs to be tuned for the SEV
+    esdf_slice_min_height: 0.10
+    esdf_slice_max_height: 1.50
+    esdf_slice_height: 0.50
+
+    # max distance for integrating depth into map, 6 meters is usually good for d455 but if the quality degrades on open roads increase the distance
+    max_integration_distance_m: 6.0
