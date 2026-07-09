@@ -3,10 +3,10 @@
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <nav_msgs/msg/odometry.hpp>
-// #include <geometry_msgs/msg/quaternion.hpp>
-// #include <tf2/LinearMath/Quaternion.h>
-// #include <tf2_ros/transform_broadcaster.h>
-// #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+#include <geometry_msgs/msg/quaternion.hpp>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2_ros/transform_broadcaster.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #include <rclcpp/clock.hpp>
 #include <rclcpp/time.hpp>
 #include <rclcpp/time_source.hpp>
@@ -22,6 +22,8 @@
 #include <mutex>
 #include <stop_token>
 #include <thread>
+#include <tinyxml2.h>
+#include "ament_index_cpp/get_package_share_directory.hpp"
 
 class odomPublisher : public rclcpp::Node{
 
@@ -32,7 +34,7 @@ class odomPublisher : public rclcpp::Node{
         void timer_callback();
         void listenLoop(std::stop_token stop_token);
         void processPacket(char* buffer, int length);
-        nav_msgs::msg::Odometry calculateOdometry();
+        uint16_t loadUdpPort(const std::string& filename);
 
     private:
         std::string udp_string;
@@ -54,6 +56,14 @@ class odomPublisher : public rclcpp::Node{
         rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr publisher_;
         size_t count_;
 
+
+        tf2::Quaternion q_tf;
+        geometry_msgs::msg::Quaternion q_msg;
+
+        nav_msgs::msg::Odometry odom;
+        geometry_msgs::msg::TransformStamped odom_trans;
+        tf2_ros::TransformBroadcaster odom_broadcaster = tf2_ros::TransformBroadcaster(*this);
+
         std::mutex odom_mutex;
-        nav_msgs::msg::Odometry current_odom;
+        nav_msgs::msg::Odometry currentOdom;
 };

@@ -10,11 +10,7 @@
 
 struct OdomPacket
 {
-    float x;
-    float y;
-    float theta;
-    float linear_velocity;
-    float angular_velocity;
+    float data[17];
 };
 
 int main()
@@ -29,7 +25,7 @@ int main()
 
     sockaddr_in dest{};
     dest.sin_family = AF_INET;
-    dest.sin_port = htons(12345);
+    dest.sin_port = htons(8324);
 
     if (inet_pton(AF_INET, "127.0.0.1", &dest.sin_addr) != 1)
     {
@@ -43,37 +39,52 @@ int main()
 
     while (true)
     {
-        packet.x = t;
-        packet.y = 2.0f * t;
-        packet.theta = 0.1f * t;
-        packet.linear_velocity = 1.5f;
-        packet.angular_velocity = 0.25f;
+        OdomPacket packet{};
 
-        ssize_t sent = sendto(
-            sock,
-            &packet,
-            sizeof(packet),
-            0,
-            reinterpret_cast<sockaddr*>(&dest),
-            sizeof(dest));
+        float t = 0.0f;
 
-        if (sent < 0)
+        while (true)
         {
-            perror("sendto");
-        }
-        else
-        {
-            std::cout
-                << "Sent packet: "
-                << "x=" << packet.x
-                << " y=" << packet.y
-                << " theta=" << packet.theta
-                << std::endl;
-        }
+            packet.data[0] = t;          // x
+            packet.data[1] = 2.0f * t;   // y
+            packet.data[2] = 0.0f;       // z
 
-        t += 0.1f;
+            packet.data[3] = 0.0f;       // roll
+            packet.data[4] = 0.0f;       // pitch
+            packet.data[5] = 0.1f * t;   // yaw
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            packet.data[6] = 1.5f;      // x velocity
+            packet.data[7] = 0.0f;      // y velocity
+            packet.data[8] = 0.0f;      // z velocity
+
+            packet.data[9]  = 0.0f;     // roll velocity
+            packet.data[10] = 0.0f;     // pitch velocity
+            packet.data[11] = 0.25f;    // yaw velocity
+
+            // unused values
+            packet.data[12] = 0.0f;
+            packet.data[13] = 0.0f;
+            packet.data[14] = 0.0f;
+            packet.data[15] = 0.0f;
+            packet.data[16] = 0.0f;
+
+            ssize_t sent = sendto(
+                sock,
+                &packet,
+                sizeof(packet),
+                0,
+                reinterpret_cast<sockaddr*>(&dest),
+                sizeof(dest)
+            );
+
+            std::cout << "Sent " << sent << " bytes\n";
+
+            t += 0.1f;
+
+            std::this_thread::sleep_for(
+                std::chrono::milliseconds(100)
+            );
+        }
     }
 
     close(sock);
