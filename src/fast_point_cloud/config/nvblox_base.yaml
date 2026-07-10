@@ -7,10 +7,39 @@
     mapping_type: "static_tsdf"
     esdf_mode: "2d"
     publish_esdf_distance_slice: true
-    # this is for height banding for obstacle detection which needs to be tuned for the SEV
-    esdf_slice_min_height: 0.10
-    esdf_slice_max_height: 1.50
-    esdf_slice_height: 0.50
+    input_qos: "SENSOR_DATA"
+    decay_tsdf_rate_hz: 5.0
+    clear_map_outside_radius_rate_hz: 1.0
+    map_clearing_radius_m: 9.0
+    map_clearing_frame_id: "base_link"
+    update_esdf_rate_hz: 10.0
 
-    # max distance for integrating depth into map, 6 meters is usually good for d455 but if the quality degrades on open roads increase the distance
-    max_integration_distance_m: 6.0
+    multi_mapper:
+      remove_small_connected_components: false
+
+    static_mapper:
+      do_depth_preprocessing: false
+      esdf_slice_min_height: 0.05
+      esdf_slice_max_height: 1.50
+      esdf_slice_height: 0.0
+      projective_integrator_max_integration_distance_m: 8.0
+
+      # from nvnida
+      projective_integrator_max_weight: 5.0
+
+      projective_tsdf_integrator_invalid_depth_decay_factor: 0.9
+
+      # from nvidia
+      projective_integrator_weighting_mode: "inverse_square_tsdf_distance_penalty"
+
+      tsdf_decay_factor: 0.85
+      tsdf_decayed_weight_threshold: 0.001
+      tsdf_set_free_distance_on_decayed: false
+      decay_integrator_deallocate_decayed_blocks: true
+      esdf_integrator_min_weight: 0.1
+      mesh_integrator_min_weight: 0.1
+
+      # no need for useless faraway stuff
+      layer_streamer_exclusion_radius_m: 9.0
+      layer_streamer_exclusion_height_m: 2.0
+      decay_tsdf_rate_hz: 5.0

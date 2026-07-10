@@ -1,11 +1,16 @@
-# ONLY ONE CAM SHOULD HAVE IMU ENABLED!
 cameras:
-  - name: front
-    serial_no: "_000000000000"
+  - name: IntelRealSenseD455
+    serial_no: "_231622302329"
     imu: true
-  - name: left
-    serial_no: "_111111111111"
+    vslam: true
+    stereo_profile: "848x480x60"
+  - name: IntelRealSenseD455_2
+    serial_no: "_231622302574"
     imu: false
-  - name: right
-    serial_no: "_222222222222"
+    vslam: false
+  - name: IntelRealSenseD435
+    serial_no: "_827312071735"
     imu: false
+    vslam: false
+    stereo_profile: "640x480x30"
+    color_profile: "640x480x30"

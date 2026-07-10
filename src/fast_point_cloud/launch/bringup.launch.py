@@ -2,8 +2,13 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.actions import (
+    DeclareLaunchArgument,
+    IncludeLaunchDescription,
+    RegisterEventHandler,
+)
 from launch.conditions import IfCondition
+from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
@@ -33,14 +38,32 @@ def generate_launch_description():
             **kwargs
         )
 
+    # nvblox is really bad and slow to start so I made this self-expnatory gate
+    pose_gate = Node(
+        package="fast_point_cloud",
+        executable="wait_for_stable_pose.py",
+        name="wait_for_stable_pose",
+        output="screen",
+    )
+
     return LaunchDescription(
         [
             DeclareLaunchArgument(
                 "profile",
                 default_value="dev",
-                description="Profile to use for the launch (dev (RTX GPUS), jetson)",
+                description="Performance profile: dev (RTX) or Jetson",
             ),
             DeclareLaunchArgument("use_rviz", default_value="true"),
+            DeclareLaunchArgument(
+                "ground_constraint",
+                default_value="false",
+                description="TRUE ON SEV, FALSE ON HANDHELD",
+            ),
+            DeclareLaunchArgument(
+                "imu_fusion",
+                default_value="false",
+                description="Whether to fuse the D455 IMU into the VIO",
+            ),
             Node(
                 package="robot_state_publisher",
                 executable="robot_state_publisher",
@@ -48,8 +71,26 @@ def generate_launch_description():
                 output="screen",
             ),
             include("cameras.launch.py"),
-            include("visual_slam.launch.py"),
-            include("nvblox.launch.py", launch_arguments={"profile": profile}.items()),
+            include(
+                "visual_slam.launch.py",
+                launch_arguments={
+                    "ground_constraint": LaunchConfiguration("ground_constraint"),
+                    "imu_fusion": LaunchConfiguration("imu_fusion"),
+                }.items(),
+            ),
+            pose_gate,
+            RegisterEventHandler(
+                OnProcessExit(
+                    target_action=pose_gate,
+                    on_exit=[
+                        include(
+                            "nvblox.launch.py",
+                            launch_arguments={"profile": profile}.items(),
+                        )
+                    ],
+                )
+            ),
+            include("surround_view.launch.py"),
             include("rviz.launch.py", condition=IfCondition(use_rviz)),
         ]
     )

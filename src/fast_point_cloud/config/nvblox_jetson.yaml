@@ -1,4 +1,5 @@
 /**:
   ros__parameters:
     voxel_size: 0.08
-    max_integration_distance_m: 4.0
+    static_mapper:
+      projective_integrator_max_integration_distance_m: 4.0
