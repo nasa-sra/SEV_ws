@@ -3,10 +3,10 @@ surround_view:
     esdf_topic: /nvblox_node/static_esdf_pointcloud
     vehicle_frame: base_link
 
-    obstacle_intensity_threshold: 0.06
+    obstacle_intensity_threshold: 0.08
 
     display_range_m: 8.0
-    grid_resolution_m: 0.08
+    grid_resolution_m: 0.85
     min_cluster_cells: 3
 
     column_height_m: 0.45

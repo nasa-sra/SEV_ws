@@ -1,5 +1,5 @@
 /**:
   ros__parameters:
-    voxel_size: 0.05
+    voxel_size: 0.01
     update_mesh_rate_hz: 2.0
     global_time_enabled: true
