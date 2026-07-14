@@ -132,7 +132,7 @@ Example:
 
 ```xml
 <config>
-    <udp_port>8324</udp_port>
+    <udp_port>0324</udp_port>
 </config>
 ```
 
