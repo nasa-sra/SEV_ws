@@ -31,8 +31,8 @@ def generate_launch_description():
     for idx, cam in enumerate(load_cameras()):
         name = cam["name"]
         uses_vslam = cam.get("vslam", True)
-        stereo_profile = cam.get("stereo_profile", "640x480x30")
-        color_profile = cam.get("color_profile", "640x480x30")
+        stereo_profile = cam.get("stereo_profile", "848x480x60")
+        color_profile = cam.get("color_profile", "848x480x60")
         args = {
             "camera_name": name,
             "camera_namespace": name,

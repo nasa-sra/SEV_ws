@@ -4,10 +4,10 @@ cameras:
     imu: true
     vslam: true
     stereo_profile: "848x480x60"
-  # - name: IntelRealSenseD455_2
-  #   serial_no: "_231622302574"
-  #   imu: false
-  #   vslam: false
+  - name: IntelRealSenseD455_2
+    serial_no: "_231622302574"
+    imu: false
+    vslam: false
   # - name: IntelRealSenseD435
   #   serial_no: "_827312071735"
   #   imu: false

@@ -23,6 +23,6 @@
 
   <xacro:camera_mount name="IntelRealSenseD455" x="0.0" y="0.0" z="0.0" roll="0" pitch="0" yaw="0"/>
   <xacro:camera_mount name="IntelRealSenseD455_2" x="-0.234367851" y="0.067184139" z="0.0" roll="0" pitch="0" yaw="1.57079632679"/>
-  <xacro:camera_mount name="IntelRealSenseD435" x="-0.098226089" y="0.14740766" z="0.0" roll="3.14159265359" pitch="0" yaw="0.78539816339"/>
+  <!-- <xacro:camera_mount name="IntelRealSenseD435" x="-0.098226089" y="0.14740766" z="0.0" roll="3.14159265359" pitch="0" yaw="0.78539816339"/> -->
 
 </robot>

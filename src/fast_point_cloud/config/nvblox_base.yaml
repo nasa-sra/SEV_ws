@@ -10,7 +10,7 @@
     input_qos: "SENSOR_DATA"
     decay_tsdf_rate_hz: 5.0
     clear_map_outside_radius_rate_hz: 1.0
-    map_clearing_radius_m: 9.0
+    map_clearing_radius_m: 20.0
     map_clearing_frame_id: "base_link"
     update_esdf_rate_hz: 10.0
 
@@ -19,10 +19,10 @@
 
     static_mapper:
       do_depth_preprocessing: false
-      esdf_slice_min_height: 0.05
+      esdf_slice_min_height: -0.5
       esdf_slice_max_height: 1.50
-      esdf_slice_height: 0.0
-      projective_integrator_max_integration_distance_m: 8.0
+      esdf_slice_height: -0.5
+      projective_integrator_max_integration_distance_m: 30.0
 
       # from nvnida
       projective_integrator_max_weight: 5.0
