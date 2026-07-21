@@ -1,48 +1,48 @@
 # WebSocket Bridge
 
-A ROS 2 package that collects robot state data from multiple ROS topics, packages the latest data into a JSON message, and transmits the JSON data to a remote WebSocket server.
+The `websocket_bridge` package is a ROS 2 node that collects robot state and sensor data from multiple ROS 2 topics, packages the data into JSON, and sends the JSON data to an external application over a WebSocket connection.
 
-The bridge is designed to provide a simple interface between a ROS 2 system and an external application that communicates over WebSockets.
-
----
-
-## Overview
-
-The `websocket_bridge` node subscribes to three ROS 2 topics:
+The bridge subscribes to:
 
 * `/odom`
 * `/vectornav/pose`
 * `/vectornav/imu`
 
-The latest message received from each topic is stored by the bridge. At the configured publish rate, the bridge packages the latest available data into a JSON object and sends it to a WebSocket server.
+The latest data from these topics is stored by the bridge and packaged into a JSON message that is transmitted to a WebSocket server at a configurable rate.
+
+---
+
+## Overview
 
 The overall data flow is:
 
 ```text
-                    ROS 2
-                      │
-       ┌──────────────┼──────────────┐
-       │              │              │
-       ▼              ▼              ▼
-    /odom      /vectornav/pose   /vectornav/imu
-       │              │              │
-       │              │              │
-       └──────────────┼──────────────┘
-                      │
-                      ▼
-             websocket_bridge
-                      │
-                      │ Build JSON
-                      ▼
-                 JSON Message
-                      │
-                      │ WebSocket
-                      ▼
-             WebSocket Server
-                      │
-                      ▼
-              External Application
+                         ROS 2
+                           │
+            ┌──────────────┼──────────────┐
+            │              │              │
+            ▼              ▼              ▼
+         /odom      /vectornav/pose   /vectornav/imu
+            │              │              │
+            │              │              │
+            └──────────────┼──────────────┘
+                           │
+                           ▼
+                  websocket_bridge
+                           │
+                           │ Build JSON
+                           ▼
+                      JSON Message
+                           │
+                           │ WebSocket
+                           ▼
+                  WebSocket Server
+                           │
+                           ▼
+                  External Application
 ```
+
+The WebSocket bridge acts as a **WebSocket client**. It connects to a WebSocket server that must already be running.
 
 ---
 
@@ -57,7 +57,7 @@ websocket_bridge/
 ├── README.md
 │
 ├── config/
-│   └── websocket_config.xml
+│   └── websocket_bridge.xml
 │
 ├── include/
 │   └── websocket_bridge.hpp
@@ -74,27 +74,32 @@ websocket_bridge/
 
 ### `src/bridge_standalone.cpp`
 
-Contains the `main()` function and starts the ROS 2 node.
+Contains the `main()` function for the ROS 2 node.
 
-It initializes ROS 2, creates the `WebsocketBridge` node, spins the node, and shuts down ROS 2 when the process exits.
+This file:
+
+1. Initializes ROS 2.
+2. Creates the `WebsocketBridge` node.
+3. Spins the node.
+4. Shuts down ROS 2 when the node exits.
 
 ---
 
 ### `src/websocket_bridge.cpp`
 
-Contains the main implementation of the WebSocket bridge.
+Contains the primary implementation of the WebSocket bridge.
 
 Responsibilities include:
 
-* Creating ROS 2 subscribers
-* Receiving `/odom`
-* Receiving `/vectornav/pose`
-* Receiving `/vectornav/imu`
-* Storing the latest received messages
-* Loading the XML configuration
-* Building the JSON payload
-* Connecting to the WebSocket server
-* Sending JSON data over the WebSocket
+* Creating ROS 2 subscribers.
+* Receiving `/odom` messages.
+* Receiving `/vectornav/pose` messages.
+* Receiving `/vectornav/imu` messages.
+* Storing the latest received messages.
+* Loading the XML configuration.
+* Building the JSON payload.
+* Connecting to the WebSocket server.
+* Sending JSON data over the WebSocket connection.
 
 ---
 
@@ -102,23 +107,29 @@ Responsibilities include:
 
 Contains the `WebsocketBridge` class declaration.
 
-This includes:
+This includes declarations for:
 
-* ROS 2 subscriber declarations
-* ROS 2 message storage
-* Callback declarations
-* WebSocket client declarations
-* JSON-building functions
-* Thread synchronization
-* Configuration variables
+* ROS 2 subscribers.
+* ROS 2 message storage.
+* ROS 2 callbacks.
+* WebSocket client functionality.
+* JSON generation.
+* Configuration variables.
+* Thread synchronization.
 
 ---
 
-### `config/websocket_config.xml`
+### `config/websocket_bridge.xml`
 
-Contains the WebSocket connection and bridge configuration.
+Contains the WebSocket bridge configuration.
 
-The XML file is installed with the ROS 2 package and loaded at runtime.
+The configuration specifies information such as:
+
+* WebSocket server address.
+* WebSocket server port.
+* JSON publishing rate.
+
+The configuration is installed with the ROS 2 package and loaded by the C++ node at runtime.
 
 ---
 
@@ -126,13 +137,15 @@ The XML file is installed with the ROS 2 package and loaded at runtime.
 
 Launches the `websocket_bridge` ROS 2 node.
 
-The node loads its configuration directly from the installed XML configuration file.
+The node loads `websocket_bridge.xml` directly from the installed package configuration directory.
 
 ---
 
 # ROS 2 Topics
 
-The bridge subscribes to the following topics.
+The bridge subscribes to three ROS 2 topics.
+
+---
 
 ## `/odom`
 
@@ -142,9 +155,18 @@ Message type:
 nav_msgs/msg/Odometry
 ```
 
-The bridge uses the odometry message to obtain robot position, orientation, and other available odometry information.
+This topic provides odometry information.
 
-The message structure includes:
+The bridge can use information such as:
+
+* Position.
+* Orientation.
+* Linear velocity.
+* Angular velocity.
+* Pose covariance.
+* Twist covariance.
+
+The message structure is:
 
 ```text
 Odometry
@@ -174,7 +196,7 @@ geometry_msgs/msg/PoseWithCovarianceStamped
 
 This topic is expected to be published by the VectorNav ROS 2 node.
 
-The message structure includes:
+The message structure is:
 
 ```text
 PoseWithCovarianceStamped
@@ -186,7 +208,26 @@ PoseWithCovarianceStamped
     └── covariance
 ```
 
-The bridge uses the VectorNav position and orientation data and can also include the covariance information in the JSON payload.
+The bridge can use:
+
+* Position.
+* Orientation.
+* Pose covariance.
+* Header information.
+
+Because the message type is `PoseWithCovarianceStamped`, position data is accessed through the additional `pose` layer.
+
+For example:
+
+```cpp
+pose.pose.pose.position.x
+```
+
+rather than:
+
+```cpp
+pose.pose.position.x
+```
 
 ---
 
@@ -200,22 +241,26 @@ sensor_msgs/msg/Imu
 
 This topic is expected to be published by the VectorNav ROS 2 node.
 
-The bridge uses IMU information such as:
+The bridge can use information such as:
 
-* Linear acceleration
-* Angular velocity
-* Orientation
-* Covariance information, if included in the JSON implementation
+* Orientation.
+* Angular velocity.
+* Linear acceleration.
+* Orientation covariance.
+* Angular velocity covariance.
+* Linear acceleration covariance.
 
 ---
 
 # WebSocket Configuration
 
-The bridge uses an XML configuration file located at:
+The bridge uses the following XML configuration file:
 
 ```text
-config/websocket_config.xml
+config/websocket_bridge.xml
 ```
+
+The exact XML structure must match the configuration parser implemented in `websocket_bridge.cpp`.
 
 An example configuration is:
 
@@ -233,9 +278,9 @@ An example configuration is:
 </websocket_config>
 ```
 
-The exact XML structure should match the configuration parser implemented in `websocket_bridge.cpp`.
+---
 
-## Host
+## WebSocket Host
 
 The host specifies the IP address of the WebSocket server.
 
@@ -245,7 +290,7 @@ For a WebSocket server running on the same computer:
 <host>127.0.0.1</host>
 ```
 
-For a server running on another computer, replace this with the server's IP address.
+For a WebSocket server running on another computer, use the IP address of that computer.
 
 For example:
 
@@ -255,9 +300,9 @@ For example:
 
 ---
 
-## Port
+## WebSocket Port
 
-The port specifies which port the WebSocket server is listening on.
+The port specifies the port on which the WebSocket server is listening.
 
 For example:
 
@@ -282,26 +327,22 @@ For example:
 means the bridge operates at approximately:
 
 ```text
-10 messages per second
+10 Hz
 ```
 
 or:
 
 ```text
-10 Hz
+10 messages per second
 ```
 
-A value of:
+A configuration of:
 
 ```xml
 <publish_rate>1.0</publish_rate>
 ```
 
-would result in approximately:
-
-```text
-1 message per second
-```
+would result in approximately one message per second.
 
 ---
 
@@ -309,54 +350,59 @@ would result in approximately:
 
 The bridge acts as a **WebSocket client**.
 
-It connects to the server configured in:
-
-```text
-config/websocket_config.xml
-```
-
-For example:
+For example, with the default configuration:
 
 ```text
 ws://127.0.0.1:9002
 ```
 
-The bridge does not create a WebSocket server.
+the bridge attempts to connect to a WebSocket server running on:
 
-Therefore, another application must be running as the WebSocket server.
+```text
+IP address: 127.0.0.1
+Port:       9002
+```
 
-The connection architecture is:
+The architecture is:
 
 ```text
 websocket_bridge
       │
-      │ WebSocket client
+      │ WebSocket Client
       │
       ▼
 ws://127.0.0.1:9002
       │
-      │ WebSocket server
+      │ WebSocket Server
       ▼
 External Application
 ```
 
-If no server is listening on the configured host and port, the bridge will report a connection error such as:
+The bridge does **not** create the WebSocket server.
+
+An external application must provide the WebSocket server.
+
+If no server is listening on the configured host and port, the bridge may report:
 
 ```text
 Connection refused
 ```
 
-This means the bridge could not establish a connection to the WebSocket server.
+This means that the bridge attempted to connect but no WebSocket server accepted the connection.
 
 ---
 
 # JSON Data
 
-The bridge packages the ROS 2 data into JSON before sending it over the WebSocket connection.
+The bridge packages ROS 2 data into a JSON object before sending it over the WebSocket connection.
 
-The exact contents depend on the implementation of `buildJson()`.
+The exact JSON structure depends on the implementation of `buildJson()` in:
 
-A typical payload may look similar to:
+```text
+src/websocket_bridge.cpp
+```
+
+A typical JSON payload may look like:
 
 ```json
 {
@@ -403,56 +449,54 @@ A typical payload may look similar to:
 
 The JSON is sent as a WebSocket text message.
 
-The receiving application should parse the message as standard JSON.
+The receiving application should parse the incoming WebSocket message as standard JSON.
 
 ---
 
-# Message Availability
+# Data Flow
 
-The bridge stores the latest message received from each ROS topic.
+The bridge stores the latest message received from each subscribed topic.
 
-The bridge requires the necessary ROS messages to have been received before it can construct a complete JSON message.
-
-The expected workflow is:
+The general process is:
 
 ```text
 /odom publishes
-       │
-       ▼
+      │
+      ▼
 odomCallback()
-       │
-       ▼
+      │
+      ▼
 Store latest odometry
 
 
 /vectornav/pose publishes
-       │
-       ▼
+      │
+      ▼
 poseCallback()
-       │
-       ▼
+      │
+      ▼
 Store latest VectorNav pose
 
 
 /vectornav/imu publishes
-       │
-       ▼
+      │
+      ▼
 imuCallback()
-       │
-       ▼
+      │
+      ▼
 Store latest IMU data
 
 
-All required data available
-       │
-       ▼
+Required data available
+      │
+      ▼
 buildJson()
-       │
-       ▼
-WebSocket send
+      │
+      ▼
+Send JSON over WebSocket
 ```
 
-If one or more required topics have not published any messages yet, the bridge may wait until the required data becomes available.
+The bridge uses the latest available data from each ROS topic when creating the JSON message.
 
 ---
 
@@ -464,19 +508,19 @@ From the ROS 2 workspace:
 cd ~/SEV_ws
 ```
 
-Build only the WebSocket bridge:
+Build the WebSocket bridge:
 
 ```bash
 colcon build --packages-select websocket_bridge
 ```
 
-After building, source the workspace:
+After a successful build, source the workspace:
 
 ```bash
 source install/setup.bash
 ```
 
-If the package has recently been changed and CMake configuration problems occur, clean the package build:
+If CMake or build configuration issues occur, clean the package build:
 
 ```bash
 rm -rf build/websocket_bridge
@@ -498,18 +542,18 @@ source install/setup.bash
 
 # Running the Bridge
 
-The recommended way to run the bridge is:
+The recommended method is to launch the node using the ROS 2 launch file:
 
 ```bash
 ros2 launch websocket_bridge websocket_bridge.launch.py
 ```
 
-You should see output similar to:
+Expected output is similar to:
 
 ```text
 [INFO] [websocket_bridge]: Starting WebSocket Bridge
 [INFO] [websocket_bridge]: Loading configuration from:
-.../install/websocket_bridge/share/websocket_bridge/config/websocket_config.xml
+.../install/websocket_bridge/share/websocket_bridge/config/websocket_bridge.xml
 [INFO] [websocket_bridge]: WebSocket URI: ws://127.0.0.1:9002
 [INFO] [websocket_bridge]: Publish rate: 10.00 Hz
 [INFO] [websocket_bridge]: Connecting to WebSocket server: ws://127.0.0.1:9002
@@ -519,7 +563,7 @@ You should see output similar to:
 
 # Testing the WebSocket Connection
 
-A simple Python WebSocket server can be used to test the bridge without running the complete external application.
+A simple Python WebSocket server can be used to test the bridge before connecting it to the final external application.
 
 Install the Python WebSocket package:
 
@@ -527,7 +571,13 @@ Install the Python WebSocket package:
 python3 -m pip install --user websockets
 ```
 
-Create a test server:
+Create a file named:
+
+```text
+websocket_test_server.py
+```
+
+with the following contents:
 
 ```python
 import asyncio
@@ -586,13 +636,22 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-Run the server:
+Run the test server:
 
 ```bash
 python3 websocket_test_server.py
 ```
 
-Then run the ROS 2 bridge in another terminal:
+You should see:
+
+```text
+Starting WebSocket test server
+Listening on ws://127.0.0.1:9002
+Server is running...
+Waiting for WebSocket connection...
+```
+
+In another terminal, start the bridge:
 
 ```bash
 cd ~/SEV_ws
@@ -606,11 +665,11 @@ If the connection is successful, the test server should display:
 Client connected!
 ```
 
-Once all required ROS topics are publishing, the server should begin printing the received JSON messages.
+Once the required ROS topics are publishing, the test server should begin printing the received JSON messages.
 
 ---
 
-# Testing ROS Topics
+# Testing ROS 2 Topics
 
 Check whether `/odom` is available:
 
@@ -618,19 +677,19 @@ Check whether `/odom` is available:
 ros2 topic info /odom
 ```
 
-Check VectorNav pose:
+Check whether `/vectornav/pose` is available:
 
 ```bash
 ros2 topic info /vectornav/pose
 ```
 
-Check VectorNav IMU:
+Check whether `/vectornav/imu` is available:
 
 ```bash
 ros2 topic info /vectornav/imu
 ```
 
-You can also inspect messages directly:
+You can inspect the actual messages with:
 
 ```bash
 ros2 topic echo /odom
@@ -644,7 +703,7 @@ ros2 topic echo /vectornav/pose
 ros2 topic echo /vectornav/imu
 ```
 
-To see all active topics:
+To list all active ROS 2 topics:
 
 ```bash
 ros2 topic list
@@ -662,16 +721,16 @@ Example:
 asio async_connect error: system:111 (Connection refused)
 ```
 
-This means the WebSocket bridge cannot connect to the configured WebSocket server.
+This means the bridge cannot connect to the configured WebSocket server.
 
 Check that:
 
 1. The WebSocket server is running.
-2. The server is listening on the configured IP address.
-3. The server is listening on the configured port.
-4. The XML configuration matches the server configuration.
+2. The server is listening on the correct IP address.
+3. The server is listening on the correct port.
+4. The values in `config/websocket_bridge.xml` match the WebSocket server.
 
-For example, if the bridge uses:
+For example, if the bridge is configured for:
 
 ```text
 ws://127.0.0.1:9002
@@ -689,7 +748,13 @@ the WebSocket server must listen on:
 
 First verify that the WebSocket connection is established.
 
-Then check the ROS topics:
+Then verify that the ROS topics exist:
+
+```bash
+ros2 topic list
+```
+
+Check each topic:
 
 ```bash
 ros2 topic info /odom
@@ -697,9 +762,7 @@ ros2 topic info /vectornav/pose
 ros2 topic info /vectornav/imu
 ```
 
-The bridge needs the required ROS data to be published before it can create a complete JSON payload.
-
-Verify the topics are actively publishing:
+If necessary, inspect the messages directly:
 
 ```bash
 ros2 topic echo /odom
@@ -713,37 +776,39 @@ ros2 topic echo /vectornav/pose
 ros2 topic echo /vectornav/imu
 ```
 
+If the ROS topics are not publishing, the bridge will not have new sensor data to package.
+
 ---
 
 ## VectorNav pose type mismatch
 
-The VectorNav pose topic used by this bridge is:
+The VectorNav pose topic is expected to use:
 
 ```text
 geometry_msgs/msg/PoseWithCovarianceStamped
 ```
 
-The subscriber is therefore configured for:
+The subscriber therefore uses:
 
 ```cpp
 geometry_msgs::msg::PoseWithCovarianceStamped
 ```
 
-The appropriate header is:
+The required include is:
 
 ```cpp
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
 ```
 
-The pose data is accessed through:
+Position data is accessed through:
 
-```text
+```cpp
 pose.pose.pose.position
 ```
 
 rather than:
 
-```text
+```cpp
 pose.pose.position
 ```
 
@@ -755,19 +820,25 @@ because `PoseWithCovarianceStamped` contains an additional `PoseWithCovariance` 
 
 The bridge expects the XML configuration to be installed with the package.
 
-After building, the configuration should be located under:
-
-```text
-install/websocket_bridge/share/websocket_bridge/config/
-```
-
-Verify it exists:
+After building, verify that the file exists:
 
 ```bash
 ls ~/SEV_ws/install/websocket_bridge/share/websocket_bridge/config/
 ```
 
-If the file is missing, verify that the `config` directory is installed in `CMakeLists.txt`:
+You should see:
+
+```text
+websocket_bridge.xml
+```
+
+The expected installed path is:
+
+```text
+~/SEV_ws/install/websocket_bridge/share/websocket_bridge/config/websocket_bridge.xml
+```
+
+If the file is missing, verify that the `config` directory is installed by `CMakeLists.txt`:
 
 ```cmake
 install(
@@ -798,11 +869,11 @@ The package uses the following ROS 2 dependencies:
 
 The package also uses:
 
-* TinyXML2 for XML configuration parsing
-* WebSocket++ for WebSocket communication
-* nlohmann/json for JSON serialization
+* TinyXML2 — XML configuration parsing
+* WebSocket++ — WebSocket communication
+* nlohmann/json — JSON serialization
 
-On Ubuntu, the required non-ROS libraries can be installed with:
+The required non-ROS libraries can be installed with:
 
 ```bash
 sudo apt install libtinyxml2-dev
@@ -816,48 +887,49 @@ sudo apt install libwebsocketpp-dev
 sudo apt install libasio-dev
 ```
 
-For nlohmann/json:
-
 ```bash
 sudo apt install nlohmann-json3-dev
 ```
 
 ---
 
-# Typical Deployment
+# System Architecture
 
-In a complete robot system, the WebSocket bridge can run alongside the nodes responsible for publishing odometry and VectorNav data.
+In the complete robot system, the WebSocket bridge can run alongside the nodes responsible for publishing wheel odometry and VectorNav data.
 
-A typical system may look like:
+A typical system is:
 
 ```text
-ROS 2 System
-│
-├── Wheel Odometry Node
-│      │
-│      └── /odom
-│
-├── VectorNav Node
-│      │
-│      ├── /vectornav/pose
-│      └── /vectornav/imu
-│
-└── WebSocket Bridge
-       │
-       ├── Subscribes to /odom
-       ├── Subscribes to /vectornav/pose
-       ├── Subscribes to /vectornav/imu
-       │
-       └── Sends JSON
-              │
-              ▼
-       External WebSocket Server
-              │
-              ▼
-       External Application
+                         ROS 2 Workspace
+                               │
+             ┌─────────────────┼─────────────────┐
+             │                 │                 │
+             ▼                 ▼                 ▼
+       Wheel Odometry      VectorNav       WebSocket Bridge
+           Node              Node                Node
+             │                 │                  │
+             │                 ├── /vectornav/   │
+             │                 │    pose         │
+             │                 │                  │
+             │                 └── /vectornav/   │
+             │                      imu          │
+             │                                    │
+             └────── /odom ──────────────────────┤
+                                                  │
+                                                  ▼
+                                           Build JSON
+                                                  │
+                                                  ▼
+                                          WebSocket Client
+                                                  │
+                                                  ▼
+                                         WebSocket Server
+                                                  │
+                                                  ▼
+                                         External Application
 ```
 
-The WebSocket bridge is therefore independent of the nodes that publish the sensor data. It only requires the expected ROS topics to exist and publish messages.
+The `websocket_bridge` package is independent of the nodes that publish the sensor data. It only requires the expected ROS 2 topics to be available and publishing messages.
 
 ---
 
@@ -870,7 +942,7 @@ cd ~/SEV_ws
 colcon build --packages-select websocket_bridge
 ```
 
-## 2. Source
+## 2. Source the workspace
 
 ```bash
 source install/setup.bash
@@ -878,13 +950,15 @@ source install/setup.bash
 
 ## 3. Start the WebSocket server
 
-Make sure the external WebSocket server is listening on the host and port configured in:
+Start the external WebSocket server that will receive the JSON data.
+
+The server must use the host and port specified in:
 
 ```text
-config/websocket_config.xml
+config/websocket_bridge.xml
 ```
 
-For the default configuration:
+The default configuration is:
 
 ```text
 ws://127.0.0.1:9002
@@ -896,11 +970,7 @@ ws://127.0.0.1:9002
 ros2 launch websocket_bridge websocket_bridge.launch.py
 ```
 
-## 5. Verify ROS topics
-
-```bash
-ros2 topic list
-```
+## 5. Verify the ROS topics
 
 Confirm that the following topics are available:
 
@@ -910,24 +980,36 @@ Confirm that the following topics are available:
 /vectornav/imu
 ```
 
+Use:
+
+```bash
+ros2 topic list
+```
+
 ## 6. Verify JSON reception
 
-Check the WebSocket server or test server for incoming JSON messages.
+Check the WebSocket server for incoming JSON messages.
 
 ---
 
 # Summary
 
-The `websocket_bridge` package provides a bridge between ROS 2 and WebSocket-based applications.
+The `websocket_bridge` package provides a bridge between ROS 2 and external applications using WebSockets.
 
-It:
+The bridge:
 
 1. Subscribes to `/odom`.
 2. Subscribes to `/vectornav/pose`.
 3. Subscribes to `/vectornav/imu`.
-4. Stores the latest sensor data.
-5. Converts the data into JSON.
+4. Stores the latest received sensor data.
+5. Packages the data into JSON.
 6. Connects to a configured WebSocket server.
 7. Sends the JSON data at the configured publish rate.
 
-The package is intended to run as part of a larger ROS 2 system and provides a simple mechanism for making robot state and sensor data available to external applications over a WebSocket connection.
+Configuration is controlled through:
+
+```text
+config/websocket_bridge.xml
+```
+
+The package is intended to run as part of a larger ROS 2 system and provides a simple interface for making robot state and sensor data available to external applications over a WebSocket connection.
