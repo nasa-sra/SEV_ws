@@ -39,9 +39,9 @@ class odomPublisher : public rclcpp::Node{
     private:
         std::string udp_string;
         uint8_t udp_size;
-        uint16_t udp_port = 12345;
+        uint16_t udp_port;
 
-        char* server_address_str =  (char *)"127.0.0.1";
+        char* server_address_str =  (char *)"192.168.0.5";
         uint16_t server_port =  44332;
 
         std::string topic_name = "odom";

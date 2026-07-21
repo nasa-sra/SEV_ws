@@ -200,8 +200,12 @@ void odomPublisher::processPacket(char* buffer, int length)
     odom.twist.twist.angular.y = LS_PITCH_VEL;
     odom.twist.twist.angular.z = LS_YAW_VEL;
 
-    
-
+    RCLCPP_INFO(this->get_logger(),
+                "Received odom data: Position (%.3f, %.3f, %.3f), Orientation (%.3f, %.3f, %.3f), Linear Velocity (%.3f, %.3f, %.3f), Angular Velocity (%.3f, %.3f, %.3f)",
+                LS_X_POS, LS_Y_POS, LS_Z_POS,
+                LS_ROLL_POS, LS_PITCH_POS, LS_YAW_POS,
+                LS_X_VEL, LS_Y_VEL, LS_Z_VEL,
+                LS_ROLL_VEL, LS_PITCH_VEL, LS_YAW_VEL);
     std::lock_guard<std::mutex> lock(odom_mutex);
     currentOdom = odom;
 }

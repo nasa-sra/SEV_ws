@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<package format="3">
+
+    <name>websocket_bridge</name>
+
+    <version>0.0.1</version>
+
+    <description>
+        ROS 2 node that subscribes to odometry,
+        VectorNav pose, and VectorNav IMU data,
+        packages the data as JSON, and sends it
+        over a WebSocket connection.
+    </description>
+
+    <maintainer email="aaronmathewschips@gmail.com">
+        Aaron Mathews
+    </maintainer>
+
+    <license>Apache-2.0</license>
+
+
+    <!-- ROS 2 dependencies -->
+
+    <depend>rclcpp</depend>
+
+    <depend>nav_msgs</depend>
+
+    <depend>sensor_msgs</depend>
+
+    <depend>geometry_msgs</depend>
+
+    <depend>ament_index_cpp</depend>
+
+
+    <!-- System dependencies -->
+
+    <depend>tinyxml2</depend>
+
+
+    <export>
+
+        <build_type>ament_cmake</build_type>
+
+    </export>
+
+</package>

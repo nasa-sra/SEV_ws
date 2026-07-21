@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<websocket_bridge>
+
+    <websocket>
+        <uri>ws://127.0.0.1:9002</uri>
+    </websocket>
+
+    <publishing>
+        <rate>10.0</rate>
+    </publishing>
+
+</websocket_bridge>
