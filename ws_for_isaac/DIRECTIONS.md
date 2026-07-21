@@ -1,0 +1,1 @@
+Move thew workspaces folder into /home/$USER/  this serves as the workspace that isaac ros is built on. This is just a template of what needs to be there, the actual files and code needs to be installed by the user.

@@ -2,8 +2,15 @@
 <robot name="sev"
   xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <!-- SEV body origin -->
-  <link name="base_link"/>
+  <link name="base_link">
+    <!-- placholder for SEV MAKE SURE TO CHANGE THIS TO THE SEV CAD-->
+    <visual>
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <geometry>
+        <box size="1.4 1.0 0.4"/>
+      </geometry>
+    </visual>
+  </link>
 
   <xacro:macro name="camera_mount" params="name x y z roll pitch yaw">
     <link name="${name}_link"/>
@@ -14,9 +21,8 @@
     </joint>
   </xacro:macro>
 
-  <!-- cameras go here btw -->
-  <xacro:camera_mount name="front" x="0.0" y="0.0" z="0.5" roll="0" pitch="0" yaw="0"/>
-  <xacro:camera_mount name="left" x="0.0" y="0" z="0.5" roll="0" pitch="0" yaw="0"/>
-  <xacro:camera_mount name="right" x="0.0" y="0" z="0.5" roll="0" pitch="0" yaw="0"/>
+  <xacro:camera_mount name="IntelRealSenseD455" x="0.0" y="0.0" z="0.0" roll="0" pitch="0" yaw="0"/>
+  <xacro:camera_mount name="IntelRealSenseD455_2" x="-0.234367851" y="0.067184139" z="0.0" roll="0" pitch="0" yaw="1.57079632679"/>
+  <!-- <xacro:camera_mount name="IntelRealSenseD435" x="-0.098226089" y="0.14740766" z="0.0" roll="3.14159265359" pitch="0" yaw="0.78539816339"/> -->
 
 </robot>

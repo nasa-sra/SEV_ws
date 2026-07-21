@@ -3,8 +3,11 @@ import os
 import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import ComposableNodeContainer
 from launch_ros.descriptions import ComposableNode
+from launch_ros.parameter_descriptions import ParameterValue
 
 
 def load_cameras():
@@ -16,20 +19,24 @@ def load_cameras():
 
 
 def generate_launch_description():
-    cameras = load_cameras()
+    #  ONLY CAMS THAT ARE IN VSLAM NOT THE BUM CAMS THAT AREN"T
+    cameras = [c for c in load_cameras() if c.get("vslam", True)]
 
     remappings = []
     optical_frames = []
     for i, cam in enumerate(cameras):
         name = cam["name"]
-        left, right = (
-            2 * i,
-            2 * i + 1,
-        )  # very clever math yk, i spent a lot of time on this
+        left, right = 2 * i, 2 * i + 1
         remappings += [
-            (f"visual_slam/image_{left}", f"/{name}/{name}/infra1/image_rect_raw"),
+            (
+                f"visual_slam/image_{left}",
+                f"/{name}/realsense_splitter_node/output/infra_1",
+            ),
             (f"visual_slam/camera_info_{left}", f"/{name}/{name}/infra1/camera_info"),
-            (f"visual_slam/image_{right}", f"/{name}/{name}/infra2/image_rect_raw"),
+            (
+                f"visual_slam/image_{right}",
+                f"/{name}/realsense_splitter_node/output/infra_2",
+            ),
             (f"visual_slam/camera_info_{right}", f"/{name}/{name}/infra2/camera_info"),
         ]
         optical_frames += [
@@ -44,8 +51,14 @@ def generate_launch_description():
         "min_num_images": 2,
         "rectified_images": True,
         "enable_image_denoising": False,
-        "enable_localization_n_mapping": True,  # apprently this is important for vslam to work
-        "enable_imu_fusion": bool(imu_cam),
+        "enable_localization_n_mapping": True,
+        "enable_imu_fusion": ParameterValue(
+            LaunchConfiguration("imu_fusion"), value_type=bool
+        ),
+        "enable_ground_constraint_in_odometry": ParameterValue(
+            LaunchConfiguration("ground_constraint"), value_type=bool
+        ),
+        "enable_ground_constraint_in_slam": False,
         "map_frame": "map",
         "odom_frame": "odom",
         "base_frame": "base_link",
@@ -56,10 +69,29 @@ def generate_launch_description():
     }
     if imu_cam:
         params["imu_frame"] = f"{imu_cam}_imu_optical_frame"
-        # TODO -> from gemini -> set D455 IMU noise densities (gyro/accel noise + random walk) from the datasheet for best VIO
+        # these numbers are from nvidia reference
+        params.update(
+            {
+                "gyro_noise_density": 0.000244,
+                "gyro_random_walk": 0.000019393,
+                "accel_noise_density": 0.001862,
+                "accel_random_walk": 0.003,
+                "calibration_frequency": 200.0,
+            }
+        )
 
     return LaunchDescription(
         [
+            DeclareLaunchArgument(
+                "imu_fusion",
+                default_value="false",
+                description="Whether to fuse the D455 IMU into the VIO",
+            ),
+            DeclareLaunchArgument(
+                "ground_constraint",
+                default_value="true",
+                description="TRUE ON SEV, FALSE ON HANDHELD",
+            ),
             ComposableNodeContainer(
                 name="visual_slam_container",
                 namespace="",
@@ -75,6 +107,6 @@ def generate_launch_description():
                     )
                 ],
                 output="screen",
-            )
+            ),
         ]
     )

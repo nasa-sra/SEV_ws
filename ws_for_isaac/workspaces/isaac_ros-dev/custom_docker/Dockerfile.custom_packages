@@ -1,0 +1,11 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+# Install your custom tools or software
+RUN apt-get update && apt-get install -y ros-jazzy-isaac-ros-visual-slam
+RUN apt-get update && apt-get install -y ros-jazzy-isaac-ros-examples
+RUN apt-get update && apt-get install -y ros-jazzy-rviz2
+RUN apt-get update && apt-get install -y ros-jazzy-isaac-ros-nvblox
+RUN apt-get update && apt-get install -y ros-jazzy-nav2-bringup
+RUN apt-get update && apt-get install -y ros-jazzy-pcl-conversions
+RUN apt-get update && apt-get install -y curl jq tar

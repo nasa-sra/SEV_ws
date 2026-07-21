@@ -6,5 +6,6 @@
     "python.analysis.extraPaths": [
         "/opt/ros/jazzy/lib/python3.12/site-packages"
     ],
-    "cmake.sourceDirectory": "/home/saath/NASA/SEV/SEV_ws/src/point_cloud"
+    "cmake.sourceDirectory": "/home/saath/NASA/SEV/SEV_ws/src/point_cloud",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }

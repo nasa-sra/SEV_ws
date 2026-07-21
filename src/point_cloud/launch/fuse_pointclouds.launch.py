@@ -127,11 +127,11 @@ def generate_launch_description():
                 "publish_rate_hz": 10.0,
                 "max_cloud_age_seconds": 1.0,
                 "use_color": True,
-                "voxel_leaf_size": 0.2,
+                "voxel_leaf_size": 0.4,
                 "accumulate_clouds": True,
-                "accumulation_voxel_leaf_size": 0.1,
-                "max_accumulated_points": 500000,
-                "qos_reliability": "reliable",
+                "accumulation_voxel_leaf_size": 0.2,
+                "max_accumulated_points": 1000000,
+                "qos_reliability": "best_effort",
             }
         ],
     )

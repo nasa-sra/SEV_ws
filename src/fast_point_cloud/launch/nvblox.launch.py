@@ -25,14 +25,16 @@ def generate_launch_description():
     remappings = []
     for i, cam in enumerate(cameras):
         name = cam["name"]
+        # when the emitter is on, the depth is used, otherwise the splitter doesn't care. very painful
+        if cam.get("vslam", True):
+            depth_image = f"/{name}/realsense_splitter_node/output/depth"
+        else:
+            depth_image = f"/{name}/{name}/depth/image_rect_raw"
         remappings += [
-            (
-                f"camera_{i}/depth/image",
-                f"/{name}/{name}/aligned_depth_to_color/image_raw",
-            ),
+            (f"camera_{i}/depth/image", depth_image),
             (
                 f"camera_{i}/depth/camera_info",
-                f"/{name}/{name}/aligned_depth_to_color/camera_info",
+                f"/{name}/{name}/depth/camera_info",
             ),
             (f"camera_{i}/color/image", f"/{name}/{name}/color/image_raw"),
             (f"camera_{i}/color/camera_info", f"/{name}/{name}/color/camera_info"),
@@ -48,7 +50,7 @@ def generate_launch_description():
             DeclareLaunchArgument(
                 "profile",
                 default_value="dev",
-                description="Profile to use for the launch (dev (RTX GPUS), jetson)",
+                description="Performance profile: dev (RTX) or Jetson",
             ),
             ComposableNodeContainer(
                 name="nvblox_container",
@@ -57,8 +59,8 @@ def generate_launch_description():
                 executable="component_container_mt",
                 composable_node_descriptions=[
                     ComposableNode(
-                        package="isaac_ros_nvblox",
-                        plugin="nvidia::isaac_ros::nvblox::NvbloxNode",
+                        package="nvblox_ros",
+                        plugin="nvblox::NvbloxNode",
                         name="nvblox_node",
                         parameters=[
                             base_params,
