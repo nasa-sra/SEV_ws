@@ -3,7 +3,7 @@
 <websocket_bridge>
 
     <websocket>
-        <uri>ws://127.0.0.1:9002</uri>
+        <uri>ws://localhost:9002</uri>
     </websocket>
 
     <publishing>

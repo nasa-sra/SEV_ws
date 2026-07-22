@@ -12,6 +12,8 @@
 
 #include <sensor_msgs/msg/imu.hpp>
 
+#include <sensor_msgs/msg/nav_sat_fix.hpp>
+
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
 
 
@@ -35,6 +37,8 @@ private:
     rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
     rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr pose_sub_;
     rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr imu_sub_;
+    rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr gnss_sub_;
+
 
     
 
@@ -52,9 +56,12 @@ private:
 
     std::mutex data_mutex_;
 
+    sensor_msgs::msg::NavSatFix gnss_;
+
     bool odom_received_;
     bool pose_received_;
     bool imu_received_;
+    bool gnss_received_;
 
     //---------------------------------
     // Parameters
@@ -88,10 +95,13 @@ private:
         const nav_msgs::msg::Odometry::SharedPtr msg);
 
     void poseCallback(
-    const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg);
+        const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg);
 
     void imuCallback(
         const sensor_msgs::msg::Imu::SharedPtr msg);
+
+    void gnssCallback(
+        const sensor_msgs::msg::NavSatFix::SharedPtr msg);
 
     void timerCallback();
 

@@ -22,6 +22,7 @@ WebsocketBridge::WebsocketBridge()
       odom_received_(false),
       pose_received_(false),
       imu_received_(false),
+      gnss_received_(false),
       connected_(false)
 {
     RCLCPP_INFO(
@@ -58,7 +59,7 @@ WebsocketBridge::WebsocketBridge()
 
     std::string config_path =
         package_path +
-        "/config/websocket_config.xml";
+        "/config/websocket_bridge.xml";
 
 
     RCLCPP_INFO(
@@ -96,13 +97,9 @@ WebsocketBridge::WebsocketBridge()
                 std::placeholders::_1));
 
     
-
-
     // --------------------------------------------------------
     // Create /vectornav/pose subscriber
     // --------------------------------------------------------
-
-
 
     pose_sub_ =
     create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
@@ -124,6 +121,20 @@ WebsocketBridge::WebsocketBridge()
             10,
             std::bind(
                 &WebsocketBridge::imuCallback,
+                this,
+                std::placeholders::_1));
+
+
+    // --------------------------------------------------------
+    // Create /vectornav/gnss subscriber
+    // --------------------------------------------------------
+
+    gnss_sub_ =
+        create_subscription<sensor_msgs::msg::NavSatFix>(
+            "/vectornav/gnss",
+            10,
+            std::bind(
+                &WebsocketBridge::gnssCallback,
                 this,
                 std::placeholders::_1));
 
@@ -466,6 +477,26 @@ void WebsocketBridge::imuCallback(
 
 
 // ============================================================
+// GNSS callback
+// ============================================================
+
+void WebsocketBridge::gnssCallback(
+    const sensor_msgs::msg::NavSatFix::SharedPtr msg)
+{
+    std::lock_guard<std::mutex> lock(
+        data_mutex_);
+
+
+    gnss_ =
+        *msg;
+
+
+    gnss_received_ =
+        true;
+}
+
+
+// ============================================================
 // Build JSON
 // ============================================================
 
@@ -484,6 +515,8 @@ json WebsocketBridge::buildJson()
 
     sensor_msgs::msg::Imu imu;
 
+    sensor_msgs::msg::NavSatFix gnss;
+
 
     {
         std::lock_guard<std::mutex> lock(
@@ -498,6 +531,9 @@ json WebsocketBridge::buildJson()
 
         imu =
             imu_;
+
+        gnss =
+            gnss_;
     }
 
 
@@ -512,22 +548,22 @@ json WebsocketBridge::buildJson()
     // Timestamp
     // ========================================================
 
-    j["timestamp"]["sec"] =
-        odom.header.stamp.sec;
+    // j["timestamp"]["sec"] =
+    //     odom.header.stamp.sec;
 
-    j["timestamp"]["nanosec"] =
-        odom.header.stamp.nanosec;
+    // j["timestamp"]["nanosec"] =
+    //     odom.header.stamp.nanosec;
 
 
     // ========================================================
     // Odometry
     // ========================================================
 
-    j["odom"]["frame_id"] =
-        odom.header.frame_id;
+    // j["odom"]["frame_id"] =
+    //     odom.header.frame_id;
 
-    j["odom"]["child_frame_id"] =
-        odom.child_frame_id;
+    // j["odom"]["child_frame_id"] =
+    //     odom.child_frame_id;
 
 
     // --------------------------------------------------------
@@ -579,22 +615,22 @@ json WebsocketBridge::buildJson()
     // Angular velocity
     // --------------------------------------------------------
 
-    j["odom"]["twist"]["angular"]["x"] =
-        odom.twist.twist.angular.x;
+    // j["odom"]["twist"]["angular"]["x"] =
+    //     odom.twist.twist.angular.x;
 
-    j["odom"]["twist"]["angular"]["y"] =
-        odom.twist.twist.angular.y;
+    // j["odom"]["twist"]["angular"]["y"] =
+    //     odom.twist.twist.angular.y;
 
-    j["odom"]["twist"]["angular"]["z"] =
-        odom.twist.twist.angular.z;
+    // j["odom"]["twist"]["angular"]["z"] =
+    //     odom.twist.twist.angular.z;
 
 
     // ========================================================
     // VectorNav Pose
     // ========================================================
 
-    j["vectornav_pose"]["frame_id"] =
-        pose.header.frame_id;
+    // j["vectornav_pose"]["frame_id"] =
+    //     pose.header.frame_id;
 
 
     // --------------------------------------------------------
@@ -632,15 +668,15 @@ json WebsocketBridge::buildJson()
     // Covariance
     //--------------------------------------------------------
 
-    j["vectornav_pose"]["covariance"] =
-    pose.pose.covariance;
+    // j["vectornav_pose"]["covariance"] =
+    // pose.pose.covariance;
 
     // ========================================================
     // VectorNav IMU
     // ========================================================
 
-    j["vectornav_imu"]["frame_id"] =
-        imu.header.frame_id;
+    // j["vectornav_imu"]["frame_id"] =
+    //     imu.header.frame_id;
 
 
     // --------------------------------------------------------
@@ -664,29 +700,65 @@ json WebsocketBridge::buildJson()
     // Angular velocity
     // --------------------------------------------------------
 
-    j["vectornav_imu"]["angular_velocity"]["x"] =
-        imu.angular_velocity.x;
+    // j["vectornav_imu"]["angular_velocity"]["x"] =
+    //     imu.angular_velocity.x;
 
-    j["vectornav_imu"]["angular_velocity"]["y"] =
-        imu.angular_velocity.y;
+    // j["vectornav_imu"]["angular_velocity"]["y"] =
+    //     imu.angular_velocity.y;
 
-    j["vectornav_imu"]["angular_velocity"]["z"] =
-        imu.angular_velocity.z;
+    // j["vectornav_imu"]["angular_velocity"]["z"] =
+    //     imu.angular_velocity.z;
 
 
     // --------------------------------------------------------
     // Linear acceleration
     // --------------------------------------------------------
 
-    j["vectornav_imu"]["linear_acceleration"]["x"] =
-        imu.linear_acceleration.x;
+    // j["vectornav_imu"]["linear_acceleration"]["x"] =
+    //     imu.linear_acceleration.x;
 
-    j["vectornav_imu"]["linear_acceleration"]["y"] =
-        imu.linear_acceleration.y;
+    // j["vectornav_imu"]["linear_acceleration"]["y"] =
+    //     imu.linear_acceleration.y;
 
-    j["vectornav_imu"]["linear_acceleration"]["z"] =
-        imu.linear_acceleration.z;
+    // j["vectornav_imu"]["linear_acceleration"]["z"] =
+    //     imu.linear_acceleration.z;
 
+
+    // ========================================================
+    // VectorNav GNSS
+    // ========================================================
+
+    // j["vectornav_gnss"]["frame_id"] =
+    //     gnss.header.frame_id;
+    // j["vectornav_gnss"]["status"]["status"] =
+    //     gnss.status.status;
+
+    // --------------------------------------------------------
+    // Latitude, Longitude, Altitude
+    // --------------------------------------------------------
+
+    j["vectornav_gnss"]["latitude"] =
+        gnss.latitude;
+    j["vectornav_gnss"]["longitude"] =
+        gnss.longitude;
+    // j["vectornav_gnss"]["altitude"] =
+    //     gnss.altitude;
+    
+
+    //--------------------------------------------------------
+    // Position covariance
+    //--------------------------------------------------------
+
+    // j["vectornav_gnss"]["position_covariance"] =
+    //     gnss.position_covariance;
+    
+    // //--------------------------------------------------------
+    // // Position covariance type
+    // //--------------------------------------------------------
+
+    // j["vectornav_gnss"]["position_covariance_type"] =
+    //     gnss.position_covariance_type;
+    
 
     return j;
 }
@@ -709,7 +781,8 @@ void WebsocketBridge::timerCallback()
 
         if (!odom_received_ ||
             !pose_received_ ||
-            !imu_received_)
+            !imu_received_  ||
+            !gnss_received_ )
         {
             return;
         }
